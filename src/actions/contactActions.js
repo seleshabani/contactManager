@@ -11,7 +11,7 @@ export const GetContactsList = (page) => async dispatch => {
         // const perPage = 15;
         // const offset = (page * perPage) - perPage;
 
-        const res = await axios.get(`http://jsonplaceholder.typicode.com/users/`);
+        const res = await axios.get("http://localhost:8000/api/users/");
         
         dispatch({
             type:"CONTACT_LIST_SUCCESS",
@@ -31,7 +31,7 @@ export const GetContacts = (contactID)=>async dispatch =>{
             type:"CONTACT_MULTIPLE_LOADING"
         })
 
-        const result = await axios.get(`http://jsonplaceholder.typicode.com/users/${contactID}`)
+        const result = await axios.get(`http://localhost:8000/api/users/${contactID}`)
 
         dispatch({
             type:"CONTACT_MUTIPLE_SUCCESS",
@@ -48,7 +48,11 @@ export const GetContacts = (contactID)=>async dispatch =>{
 export const deleteContact = (contactID)=>async dispatch =>{
     try {
 
-        const result = await axios.delete(`http://jsonplaceholder.typicode.com/users/${contactID}`);
+        dispatch({
+            type:"CONTACT_MULTIPLE_LOADING"
+        })
+
+        const result = await axios.delete(`http://localhost:8000/api/users/${contactID}`);
 
         dispatch({
             type:"CONTACT_DELETE_SUCCESS",
@@ -65,9 +69,9 @@ export const deleteContact = (contactID)=>async dispatch =>{
 /**
  * @param Object contact
  */
-export const updateContact = (contact)=>async dispatch=>{
+export const updateContact = (contact,id=null)=>async dispatch=>{
     try {
-        const result = await axios.put(`http://jsonplaceholder.typicode.com/users/`,contact);
+        const result = await axios.put(`http://localhost:8000/api/users/${id}`,contact);
         dispatch({
             type:"CONTACT_UPDATE_SUCCESS",
             payload:result.data
@@ -84,7 +88,7 @@ export const updateContact = (contact)=>async dispatch=>{
  */
 export const createContact = (contact)=>async dispatch=>{
     try {
-        const result = await axios.post(`http://jsonplaceholder.typicode.com/users/`,contact);
+        const result = await axios.post(`http://localhost:8000/api/users`,contact);
         dispatch({
             type:"CONTACT_CREATE_SUCCESS",
             payload:result.data

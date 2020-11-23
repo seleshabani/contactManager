@@ -24,8 +24,7 @@ const ContactsList = (props)=>{
             return ContactsList.data.map(el=>{
             return(
                 <div className="list-wrapper">
-                    <p className="contact-item"> <span>{el.name}</span> <Link to={`/contacts/${el.id}`}>voir</Link></p>
-                    
+                    <p className="contact-item"> <span>{el.nom}</span> <Link to={`/contacts/${el.id}`}>voir</Link></p>
                 </div>
             )
             })
@@ -41,11 +40,14 @@ const ContactsList = (props)=>{
         return <p>impossible de charger la liste</p>
     }
 
+    const handleSearch = ()=>{
+        props.history.push(`/contacts/${search}`)
+    }
     return(
         <div>
             <p>Recherche: </p>
             <input type="text" onChange={e=>setSearch(e.target.value)}/>
-            <button onClick={()=>props.history.push(`/contacts/${search}`)}>Chercher</button>
+            <button onClick={()=>handleSearch()}>Chercher</button>
             {ShowData()}
         </div>
     )

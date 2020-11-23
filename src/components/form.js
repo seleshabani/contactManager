@@ -13,15 +13,8 @@ const Form = (props)=>{
     const [birth,setBith] = useState("")
     const [errMsg,seterrMsg] = useState("");
 
-    const user = (props.user !== undefined)?props.user:null;
+    const userP = (props.user !== undefined)?props.user:null;
 
-    // if (user !== null) {
-    //     setNom(user.name);
-    //     setPstnom(user.username)
-    //     setSoc(user.company)
-    //     setTel(user.phone)
-    //     setEmail(user.email)
-    // }
 
     const tchekPhone = (phone)=>{
         let phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -52,28 +45,50 @@ const Form = (props)=>{
                 "birth":birth
             }
             if (props.btnText=="Modifier") {
-                dispatch(updateContact(user))
+                dispatch(updateContact(user,userP.id))
+                seterrMsg("Contact Modifié!");
              }else{
-                 dispatch(createContact(user))
+                 dispatch(createContact(userP))
+                 seterrMsg("Contact Ajouté!");
              }
         }else{
             seterrMsg("Il y a une erreur avec les champs du formualaires");
         }
     }
-    return (
-        <div className="form-zone">
-            <form>
-                <input value={nom} type="text" placeholder="nom" onChange={e=>setNom(e.target.value)}/>
-                <input value={pnom} type="text" placeholder="prénom" onChange={e=>setpnom(e.target.value)}/>
-                <input value={pstnom} type="text" placeholder="postnom" onChange={e=>setPstnom(e.target.value)}/>
-                <input value={mail} type="text" placeholder="email" onChange={e=>setEmail(e.target.value)}/>
-                <input value={tel} type="text" placeholder="numéro de téléphone" onChange={e=>setTel(e.target.value)}/>
-                <input value={soc} type="text" placeholder="Société" onChange={e=>setSoc(e.target.value)}/>
-                <input value={birth} type="text" placeholder="date de naissance" onChange={e=>setBith(e.target.value)}/>
-                <button onClick={(e)=>{e.preventDefault();handler()}}> {props.btnText}</button>
-            </form>
-            <p>{errMsg}</p>
-        </div>
-    )
+
+    if (userP !== null) {
+        return (
+            <div className="form-zone">
+                <form>
+                    <input placeholder={userP.nom} onChange={e=>setNom(e.target.value)}/>
+                    <input placeholder={userP.pnom} onChange={e=>setpnom(e.target.value)}/>
+                    <input placeholder={userP.pstnom} onChange={e=>setPstnom(e.target.value)}/>
+                    <input placeholder={userP.mail} onChange={e=>setEmail(e.target.value)}/>
+                    <input placeholder={userP.tel} onChange={e=>setTel(e.target.value)}/>
+                    <input placeholder={userP.soc} onChange={e=>setSoc(e.target.value)}/>
+                    <input placeholder={userP.birth} onChange={e=>setBith(e.target.value)}/>
+                    <button onClick={(e)=>{e.preventDefault();handler()}}> {props.btnText}</button>
+                </form>
+                <p>{errMsg}</p>
+            </div>
+        )
+    }else{
+        return (
+            <div className="form-zone">
+                <form>
+                    <input value={nom} type="text" placeholder="nom" onChange={e=>setNom(e.target.value)}/>
+                    <input value={pnom} type="text" placeholder="prénom" onChange={e=>setpnom(e.target.value)}/>
+                    <input value={pstnom} type="text" placeholder="postnom" onChange={e=>setPstnom(e.target.value)}/>
+                    <input value={mail} type="text" placeholder="email" onChange={e=>setEmail(e.target.value)}/>
+                    <input value={tel} type="text" placeholder="numéro de téléphone" onChange={e=>setTel(e.target.value)}/>
+                    <input value={soc} type="text" placeholder="Société" onChange={e=>setSoc(e.target.value)}/>
+                    <input value={birth} type="text" placeholder="date de naissance" onChange={e=>setBith(e.target.value)}/>
+                    <button onClick={(e)=>{e.preventDefault();handler()}}> {props.btnText}</button>
+                </form>
+                <p>{errMsg}</p>
+            </div>
+        )
+    }
+    
 }
 export default Form;

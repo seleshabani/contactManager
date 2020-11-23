@@ -37,12 +37,22 @@ const Contact = (props)=>{
     }
 
     const showData = ()=>{
+
+        if (ContactCreate == "1") {
+            action = "";
+            return(
+                <div>
+                    <Form btnText='Ajouter'/>
+                </div>
+            );
+        }
+
         if (action==="") {
             if(!_.isEmpty(ContactState.data)){
                 return (
                     <div>
                         <h1>
-                            {ContactState.data.contactProfil.name}
+                            {ContactState.data.contactProfil.nom}
                         </h1>
                             <button onClick={deleteCntct}>Supprimer</button>
                             <button><Link to={`/contacts/update/${ContactId}`}>Modifier</Link></button>
@@ -62,13 +72,7 @@ const Contact = (props)=>{
                 </div>
             );
         }
-        if (ContactCreate == "1") {
-            return(
-                <div>
-                    <Form btnText='Ajouter'/>
-                </div>
-            );
-        }
+       
     }
 
     return(

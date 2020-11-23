@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
+*{
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p {
+  margin: 0;
+  padding: 0;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  background-color: coral;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav a{
+  margin-right: 50px;
+  color: white;
+  text-decoration: none;
+}
+.list-wrapper {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.list-wrapper .contact-item{
+  margin: 10px 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border: 2px solid coral;
+  border-radius: 5px;
+}
+.form-zone{
+  padding: 100px;
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+}
+.form-zone form{
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
-
-.App-link {
-  color: #61dafb;
+.form-zone form input {
+  margin: 5px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-zone form button:active {
+  transform: scale(0.96);
 }

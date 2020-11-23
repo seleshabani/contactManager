@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Contact from './containers/contact';
+import ContactList from './containers/ContactList';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav>
+        <NavLink to={"/"}>Contacts</NavLink>
+        <NavLink to={"/contacts_create/1"}>Nouveau</NavLink>
+      </nav>
+     <Switch>
+       <Route path={"/contacts"} exact component={ContactList}/>
+       <Route path={"/contacts/:id"} exact component={Contact}/>
+       <Route path={"/contacts/:action/:id"} exact component={Contact}/>
+       <Route path={"/contacts_create/:create"} exact component={Contact}/>
+       <Redirect to={"/contacts"}/>
+     </Switch>
     </div>
   );
 }

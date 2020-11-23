@@ -11,11 +11,11 @@ export const GetContactsList = (page) => async dispatch => {
         // const perPage = 15;
         // const offset = (page * perPage) - perPage;
 
-        const res = await axios.get(`http://jsonplaceholder.typicode.com/users`);
+        const res = await axios.get(`http://localhost:8000/api/users`);
         
         dispatch({
             type:"CONTACT_LIST_SUCCESS",
-            payload:res.data
+            payload:res.data['hydra:member']
         });
 
     }catch(e){

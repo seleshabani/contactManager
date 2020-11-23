@@ -14,14 +14,14 @@ const Form = (props)=>{
     const [errMsg,seterrMsg] = useState("");
 
     const user = (props.user !== undefined)?props.user:null;
-    
-    if (user !== null) {
-        setNom(user.name);
-        setPstnom(user.username)
-        setSoc(user.company)
-        setTel(user.phone)
-        setEmail(user.email)
-    }
+
+    // if (user !== null) {
+    //     setNom(user.name);
+    //     setPstnom(user.username)
+    //     setSoc(user.company)
+    //     setTel(user.phone)
+    //     setEmail(user.email)
+    // }
 
     const tchekPhone = (phone)=>{
         let phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;

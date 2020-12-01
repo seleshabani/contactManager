@@ -1,6 +1,5 @@
 import axios from "axios"
-import Contact from "../containers/contact";
-
+import {API_URL} from "../config.js";
 
 export const GetContactsList = (page) => async dispatch => {
     try{
@@ -11,7 +10,7 @@ export const GetContactsList = (page) => async dispatch => {
         // const perPage = 15;
         // const offset = (page * perPage) - perPage;
 
-        const res = await axios.get("http://localhost:8000/api/users/");
+        const res = await axios.get(API_URL+"/users/");
         
         dispatch({
             type:"CONTACT_LIST_SUCCESS",
@@ -31,7 +30,7 @@ export const GetContacts = (contactID)=>async dispatch =>{
             type:"CONTACT_MULTIPLE_LOADING"
         })
 
-        const result = await axios.get(`http://localhost:8000/api/users/${contactID}`)
+        const result = await axios.get(API_URL+`/users/${contactID}`)
 
         dispatch({
             type:"CONTACT_MUTIPLE_SUCCESS",
@@ -44,7 +43,7 @@ export const GetContacts = (contactID)=>async dispatch =>{
         })
     }
 }
-
+ 
 export const deleteContact = (contactID)=>async dispatch =>{
     try {
 
@@ -52,7 +51,7 @@ export const deleteContact = (contactID)=>async dispatch =>{
             type:"CONTACT_MULTIPLE_LOADING"
         })
 
-        const result = await axios.delete(`http://localhost:8000/api/users/${contactID}`);
+        const result = await axios.delete(API_URL+`/users/${contactID}`);
 
         dispatch({
             type:"CONTACT_DELETE_SUCCESS",
@@ -71,7 +70,7 @@ export const deleteContact = (contactID)=>async dispatch =>{
  */
 export const updateContact = (contact,id=null)=>async dispatch=>{
     try {
-        const result = await axios.put(`http://localhost:8000/api/users/${id}`,contact);
+        const result = await axios.put(API_URL+`/users/${id}`,contact);
         dispatch({
             type:"CONTACT_UPDATE_SUCCESS",
             payload:result.data
@@ -88,7 +87,7 @@ export const updateContact = (contact,id=null)=>async dispatch=>{
  */
 export const createContact = (contact)=>async dispatch=>{
     try {
-        const result = await axios.post(`http://localhost:8000/api/users`,contact);
+        const result = await axios.post(API_URL+`/users`,contact);
         dispatch({
             type:"CONTACT_CREATE_SUCCESS",
             payload:result.data
@@ -97,6 +96,27 @@ export const createContact = (contact)=>async dispatch=>{
     } catch (err) {
         dispatch({
             type:"CONTACT_CREATE_FAIL",
+        })
+    }
+}
+
+export const searchContact = (item)=>async dispatch=>{
+    try {
+        dispatch({
+            type:"CONTACT_SEARCH_LOADING"
+        })
+
+        const result = await axios.get(API_URL+`/users?nom=${item}`);
+        //faire une autre requete pour recuperer la liste des contacts par societé
+        //const result = await axios.delete(API_URL+`/users?soc=${item}`);
+        dispatch({
+            type:"CONTACT_SEARCH_SUCCESS",
+            payload:result.data['hydra:member']
+        })
+
+    } catch (error) {
+        dispatch({
+            type:"CONTACT_SEARCH_FAIL"
         })
     }
 }

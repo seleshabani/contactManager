@@ -41,7 +41,7 @@ const ContactsList = (props)=>{
     }
 
     const handleSearch = ()=>{
-        props.history.push(`/contacts/${search}`)
+        props.history.push(`/search/${search}`)
     }
     return(
         <div>

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {deleteContact, GetContacts, GetContactsList} from "../actions/contactActions";
 import _ from "lodash";
-import { Redirect, useLocation,Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import Form from '../components/form'
 
 const Contact = (props)=>{
@@ -78,7 +78,7 @@ const Contact = (props)=>{
     return(
         <div>
             <p>{(deleted===0)?"":"Utilisateur supprimé"}</p>
-            <p>{(updated===0)?"":"Utilisateur supprimé"}</p>
+            <p>{(updated===0)?"":"Utilisateur modifié"}</p>
             {showData()}
         </div>
     )

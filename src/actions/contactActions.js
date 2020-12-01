@@ -87,7 +87,8 @@ export const updateContact = (contact,id=null)=>async dispatch=>{
  */
 export const createContact = (contact)=>async dispatch=>{
     try {
-        const result = await axios.post(API_URL+`/users`,contact);
+        const result = await axios.post(API_URL+`/users`,contact,{headers: {'content-type': 'application/json'}});
+        
         dispatch({
             type:"CONTACT_CREATE_SUCCESS",
             payload:result.data

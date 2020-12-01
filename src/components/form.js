@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {updateContact,createContact} from "../actions/contactActions";
+import {updateContact,createContact, GetContactsList} from "../actions/contactActions";
 const Form = (props)=>{
     
     const dispatch = useDispatch();
@@ -44,11 +44,12 @@ const Form = (props)=>{
                 "soc":soc,
                 "birth":birth
             }
-            if (props.btnText=="Modifier") {
+            if (props.btnText === "Modifier") {
                 dispatch(updateContact(user,userP.id))
                 seterrMsg("Contact Modifié!");
              }else{
-                 dispatch(createContact(userP))
+                 dispatch(createContact(user))
+                 dispatch(GetContactsList())
                  seterrMsg("Contact Ajouté!");
              }
         }else{

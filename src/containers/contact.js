@@ -50,12 +50,12 @@ const Contact = (props)=>{
         if (action==="") {
             if(!_.isEmpty(ContactState.data)){
                 return (
-                    <div>
+                    <div className="single-wrapper">
                         <h1>
                             {ContactState.data.contactProfil.nom}
                         </h1>
-                            <button onClick={deleteCntct}>Supprimer</button>
-                            <button><Link to={`/contacts/update/${ContactId}`}>Modifier</Link></button>
+                        <button onClick={deleteCntct}>Supprimer</button>
+                        <button><Link to={`/contacts/update/${ContactId}`}>Modifier</Link></button>
                     </div>
                 )
             }

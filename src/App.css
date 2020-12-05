@@ -1,7 +1,76 @@
-*{
+:root{
+  --root-color:#0e2044;
+}
+html{
   box-sizing: border-box;
 }
-p {
+*,::after,::before{
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.app{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:100%;
+}
+nav{
+  width: 25%;
+  height: 100%;
+  position: fixed;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--root-color);
+}
+nav a{
+  width: 100%;
+  margin: 10px;
+  padding-left: 5px;
+  border-bottom: 1px solid whitesmoke;
+  text-decoration: none;
+  color: whitesmoke;
+}
+.content{
+  width: 75%;
+  margin-left: 25%;
+}
+.searchBar{
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+  position: sticky;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  top: 0px;
+  background-color: var(--root-color);
+  padding-left: 50px;
+  padding-right: 20px;
+  border-left: 1px solid whitesmoke;
+}
+.list-wrapper{
+  padding-left: 20px;
+}
+.single-wrapper{
+  padding-left: 20px;
+}
+.form-zone{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.form-zone form{
+  display: flex;
+  flex-direction: column;
+}
+/* p {
   margin: 0;
   padding: 0;
 }
@@ -49,4 +118,4 @@ nav a{
 }
 .form-zone form button:active {
   transform: scale(0.96);
-}
+} */

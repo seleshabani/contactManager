@@ -18,6 +18,11 @@ const Recherche = (props)=>{
     }
 
     const showData = ()=>{
+        console.log(SearchState)
+        if (SearchState.errorMessage !== "") {
+        return <p>{SearchState.errorMessage}</p>
+        }
+
         if(!_.isEmpty(SearchState.data)){
 
             return SearchState.data.map(el=>{
@@ -28,8 +33,10 @@ const Recherche = (props)=>{
                     </div>
                 )
             })
+
+        }else{
+            return <p>Aucun résultat</p>
         }
-        return <p>Aucun résultat</p>
     }
 
     return (

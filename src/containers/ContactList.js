@@ -45,11 +45,13 @@ const ContactsList = (props)=>{
     }
     return(
         <div>
-            <p>Recherche: </p>
-            <input type="text" onChange={e=>setSearch(e.target.value)}/>
-            <button onClick={()=>handleSearch()}>Chercher</button>
+            <div className="searchBar">
+                <input type="text" onChange={e=>setSearch(e.target.value)}/>
+                <button onClick={()=>handleSearch()}>Chercher</button>
+            </div>
             {ShowData()}
         </div>
+
     )
 }
 export default ContactsList;

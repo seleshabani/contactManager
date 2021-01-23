@@ -32,10 +32,12 @@ export const GetContacts = (contactID)=>async dispatch =>{
 
         const result = await axios.get(API_URL+`/users/${contactID}`)
 
-        dispatch({
-            type:"CONTACT_MUTIPLE_SUCCESS",
-            payload:result.data
-        })
+        if (result) {
+            dispatch({
+                type:"CONTACT_MUTIPLE_SUCCESS",
+                payload:result.data
+            })
+        }
 
     }catch(e){
         dispatch({

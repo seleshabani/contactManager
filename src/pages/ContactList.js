@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetContactsList } from "../actions/contactActions";
 import _ from "lodash";
 import {Link} from "react-router-dom";
- 
-const ContactsList = (props)=>{
 
-    const [search,setSearch] = useState("");
+
+const ContactsList = (props)=>{
     const dispatch = useDispatch();
     const ContactsList = useSelector(state=>state.ContactsList);
 
@@ -18,12 +17,13 @@ const ContactsList = (props)=>{
         dispatch(GetContactsList(page))
     }
 
+    
     const ShowData = ()=>{
         if(!_.isEmpty(ContactsList.data)){
 
             return ContactsList.data.map(el=>{
             return(
-                <div className="list-wrapper">
+                <div key={el.id} className="list-wrapper">
                     <p className="contact-item"> <span>{el.nom}</span> <Link to={`/contacts/${el.id}`}>voir</Link></p>
                 </div>
             )
@@ -40,15 +40,9 @@ const ContactsList = (props)=>{
         return <p>impossible de charger la liste</p>
     }
 
-    const handleSearch = ()=>{
-        props.history.push(`/search/${search}`)
-    }
+
     return(
         <div>
-            <div className="searchBar">
-                <input type="text" onChange={e=>setSearch(e.target.value)}/>
-                <button onClick={()=>handleSearch()}>Chercher</button>
-            </div>
             {ShowData()}
         </div>
 

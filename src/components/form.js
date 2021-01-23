@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import {useForm} from 'react-hook-form';
 import { useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import {updateContact,createContact} from "../actions/contactActions";
 
 const Form = (props)=>{    

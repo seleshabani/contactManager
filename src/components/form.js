@@ -25,7 +25,6 @@ const Form = (props)=>{
     const classes = useStyle();
 
     const handlerForm = (data)=>{
-        console.log(data);
         if (checkUser()) {
             dispatch(updateContact(data,params.id))
         }else{

@@ -18,7 +18,7 @@ const ControllerInput = ({name,placeholder,control,pattern=null})=>{
                 fullWidth
                 />
             )}
-            rules={pattern?{required:true,pattern:pattern}:{required:true}}
+            
             />
     )
 }

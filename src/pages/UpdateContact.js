@@ -22,7 +22,7 @@ const UpdateContact = (props)=>{
         if (contact.data.hasOwnProperty("contactProfil")) {
             return (
                 <Container>
-                        <Typography variant="h1" gutterBottom>
+                        <Typography variant="h4" gutterBottom>
                             {contact.data.contactProfil.nom}
                         </Typography>
                         <Form contact={contact.data.contactProfil} btnText='modifier'/>

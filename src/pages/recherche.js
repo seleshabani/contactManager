@@ -22,10 +22,16 @@ const useStyle = makeStyles(()=>({
     },
     Button:{
         backgroundColor:'rgb(37,71,170)',
-        width:'15%'
+        width:'15%',
+        color:'white',
+        '&:hover':{
+            backgroundColor:'rgb(37,71,170)',
+            transform:'scale(0.99)',
+            transition:'all ease 300ms'
+        }
     },
     link:{
-        color:'white',
+        textDecoration:'none',
     }
 }))
 
@@ -56,9 +62,11 @@ const Recherche = (props)=>{
                         <CardContent>
                             <p className={classes.p}> 
                                 <span>{el.nom}</span>
+                                <Link className={classes.link} to={`/contacts/${el.id}`}>
                                 <Button className={classes.Button}>
-                                    <Link className={classes.link} to={`/contacts/${el.id}`}>voir</Link>
+                                    voir
                                 </Button>
+                                </Link>
                             </p>
                         </CardContent>
                     </Card>

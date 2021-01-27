@@ -4,7 +4,7 @@ import { Input } from "@material-ui/core";
 
 
 
-const ControllerInput = ({name,placeholder,control})=>{
+const ControllerInput = ({name,placeholder,control,pattern=null})=>{
     return(
         <Controller
             control={control}
@@ -15,8 +15,10 @@ const ControllerInput = ({name,placeholder,control})=>{
                 <Input
                 inputRef={ref}
                 placeholder={placeholder}
+                fullWidth
                 />
             )}
+            rules={pattern?{required:true,pattern:pattern}:{required:true}}
             />
     )
 }

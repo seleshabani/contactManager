@@ -12,11 +12,19 @@ import SearchIcon from '@material-ui/icons/Search';
 const useStyle = makeStyles((theme)=>({
     menu:{
 		height:'50px',
-		zIndex: theme.zIndex.drawer + 1
+		zIndex: theme.zIndex.drawer + 1,
+		transition: theme.transitions.create(['width', 'margin'], {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.leavingScreen,
+		})
 	},
 	menuShift:{
 		width:'calc(100% - 240px)',
-		marginLeft:'240px'
+		marginLeft:'240px',
+		transition: theme.transitions.create(['width', 'margin'], {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.enteringScreen,
+		})
 	},
     container:{
         display:'flex',

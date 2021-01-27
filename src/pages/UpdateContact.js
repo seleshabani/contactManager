@@ -1,20 +1,32 @@
 import React, { useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { GetContacts } from '../actions/contactActions';
+import { Card, Container, makeStyles,Typography } from '@material-ui/core';
 import Form from '../components/form';
+
+const useStyle = makeStyles(()=>({
+    card:{
+      width:'50%',
+      margin:'auto',
+      marginTop:'20px',
+      padding:'10px'
+    }
+  }))
 
 const UpdateContact = (props)=>{
     const userId = props.match.params.id;
     const dispatch = useDispatch();
     const contact = useSelector(state=>state.Contact);
-
+    const classes = useStyle();
     const ContactDetail = ()=>{
         if (contact.data.hasOwnProperty("contactProfil")) {
             return (
-                <>
-                    <h2>{contact.data.contactProfil.nom}</h2>
-                    <Form contact={contact.data.contactProfil} btnText='modifier'/>
-                </>
+                <Container>
+                        <Typography variant="h1" gutterBottom>
+                            {contact.data.contactProfil.nom}
+                        </Typography>
+                        <Form contact={contact.data.contactProfil} btnText='modifier'/>
+                </Container>
             )
         }
     }
@@ -22,6 +34,10 @@ const UpdateContact = (props)=>{
         dispatch(GetContacts(userId));
     },[userId])
 
-    return <ContactDetail/>
+    return <Container>
+            <Card className={classes.card}>
+                <ContactDetail/>
+            </Card>
+            </Container>
 }
 export default  UpdateContact;

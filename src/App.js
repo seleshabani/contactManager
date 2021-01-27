@@ -1,19 +1,32 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Menu from './components/Menu';
+import MenuBar from './components/Menu';
 import Contact from './pages/contact';
 import ContactList from './pages/ContactList';
 import Recherche from './pages/recherche';
 import NewContact from './pages/newContact'
 import UpdateContact from './pages/UpdateContact'
 import SearchForm from "./components/SearchForm";
+import { makeStyles } from '@material-ui/core';
 
+const useStyle = makeStyles((theme)=>({
+  root:{
+    display:'flex',
+    flexDirection:'column',
+  },
+  content:{
+    flexGrow:'1'
+    // height:'100vh'
+  }
+}))
 function App() {
+  const classes = useStyle();
+
   return (
-    <div className="app">
-      <Menu/>
-     <div className="content">
+    <div className={classes.root}>
      <SearchForm/>
+     <MenuBar/>
+     <main className={classes.content}>
       <Switch>
         <Route path={"/contacts"} exact component={ContactList}/>
         <Route path={"/contacts/:id"} exact component={Contact}/>
@@ -22,7 +35,7 @@ function App() {
         <Route path={"/contacts-search/:item"} exact component={Recherche}/>
         <Redirect to={"/contacts"}/>
       </Switch>
-     </div>
+     </main>
     </div>
   );
 }

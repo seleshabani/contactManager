@@ -1,40 +1,61 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {Card, CardContent,CardActions, CardHeader, Container, makeStyles, Button} from '@material-ui/core';
 import {deleteContact, GetContacts, GetContactsList} from "../actions/contactActions";
 import _ from "lodash";
 import {Link } from "react-router-dom";
 
+const useStyle = makeStyles(()=>({
+    card:{
+        width:'40%',
+        margin:'auto',
+        marginTop:'30px'
+    }
+}))
+
 const Contact = (props)=>{
     const ContactId = props.match.params.id;
     const dispatch = useDispatch();
-    const [deleted,setDeleted] = useState(0);
     const ContactState = useSelector(state=>state.Contact);
-     
-    useEffect(()=>{
-        FetchData(ContactId);
-    },[])
+    const classes = useStyle();
 
     const FetchData = (id)=>{
         dispatch(GetContacts(id))
     }
+    
+    useEffect(()=>{
+        FetchData(ContactId);
+    },[ContactId])
+
 
     const deleteCntct = ()=>{
         dispatch(deleteContact(ContactId))
         dispatch(GetContactsList)
-        setDeleted(1)
     }
 
     const showData = ()=>{
 
             if(!_.isEmpty(ContactState.data)){
                 return (
-                    <div className="single-wrapper">
-                        <h1>
-                            {ContactState.data.contactProfil.nom}
-                        </h1>
-                        <button onClick={deleteCntct}>Supprimer</button>
-                        <button><Link to={`/contacts-update/${ContactId}`}>Modifier</Link></button>
-                    </div>
+                    <Container>
+                        <Card className={classes.card}>
+                            {/* <CardHeader>
+                            </CardHeader> */}
+                            <CardContent>
+                                <h1>
+                                    {ContactState.data.contactProfil.nom}
+                                </h1>
+                            </CardContent>
+                            <CardActions>
+                                <Button  onClick={deleteCntct}>
+                                Supprimer
+                                </Button>
+                                <Button>
+                                    <Link to={`/contacts-update/${ContactId}`}>Modifier</Link>
+                                </Button>
+                            </CardActions>
+                        </Card>
+                    </Container>
                 )
             }
 
@@ -48,9 +69,9 @@ const Contact = (props)=>{
     }
 
     return(
-        <div>
+        <>
             {showData()}
-        </div>
+        </>
     )
 }
 export default Contact;

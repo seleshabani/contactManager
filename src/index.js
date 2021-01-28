@@ -10,15 +10,13 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from './theme';
 
 ReactDOM.render(
-  <React.StrictMode>
     <BrowserRouter>
       <Provider store={Store}>
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>
       </Provider>
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
   document.getElementById('root')
 );
 

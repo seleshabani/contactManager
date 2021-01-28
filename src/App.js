@@ -8,6 +8,7 @@ import NewContact from './pages/newContact'
 import UpdateContact from './pages/UpdateContact'
 import SearchForm from "./components/SearchForm";
 import { makeStyles } from '@material-ui/core';
+import FlashMessage from './components/FlashMessage';
 
 const useStyle = makeStyles((theme)=>({
   root:{
@@ -16,7 +17,6 @@ const useStyle = makeStyles((theme)=>({
   },
   content:{
     flexGrow:'1'
-    // height:'100vh'
   }
 }))
 function App() {
@@ -36,6 +36,7 @@ function App() {
         <Redirect to={"/contacts"}/>
       </Switch>
      </main>
+     <FlashMessage/>
     </div>
   );
 }

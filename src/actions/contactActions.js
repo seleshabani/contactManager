@@ -32,9 +32,9 @@ export const GetContacts = (contactID)=>async dispatch =>{
 
         const result = await axios.get(API_URL+`/users/${contactID}`)
 
-        if (result) {
+        if (result.data) {
             dispatch({
-                type:"CONTACT_MUTIPLE_SUCCESS",
+                type:"CONTACT_MULTIPLE_SUCCESS",
                 payload:result.data
             })
         }
@@ -59,6 +59,10 @@ export const deleteContact = (contactID)=>async dispatch =>{
             type:"CONTACT_DELETE_SUCCESS",
             payload:result.data
         })
+        dispatch({
+            type:'TOGGLE_FLASH',
+            payload:'Contact supprimé'
+        })
         
     } catch (err) {
         dispatch({
@@ -77,6 +81,12 @@ export const updateContact = (contact,id=null)=>async dispatch=>{
             type:"CONTACT_UPDATE_SUCCESS",
             payload:result.data
         })
+        if(result.data){
+            dispatch({
+                type:'TOGGLE_FLASH',
+                payload:'Contact modifié'
+            })
+        }
     } catch (err) {
         dispatch({
             type:"CONTACT_UPDATE_FAIL",
@@ -95,6 +105,13 @@ export const createContact = (contact)=>async dispatch=>{
             type:"CONTACT_CREATE_SUCCESS",
             payload:result.data
         })
+
+        if(result.data){
+            dispatch({
+                type:'TOGGLE_FLASH',
+                payload:'Contact crées'
+            })
+        }
         
     } catch (err) {
         dispatch({

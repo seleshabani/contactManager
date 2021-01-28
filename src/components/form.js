@@ -1,19 +1,39 @@
-import { Input,Button, makeStyles, Grid } from "@material-ui/core";
+import { makeStyles, Grid } from "@material-ui/core";
 import React from "react";
-import {Controller, useForm} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import { useDispatch } from "react-redux";
-import {useParams } from "react-router-dom";
+import {useHistory, useLocation, useParams } from "react-router-dom";
 import {updateContact,createContact} from "../actions/contactActions";
 import ControllerInput from "./ControllerInput";
 
-const useStyle = makeStyles(()=>({
+const useStyle = makeStyles((theme)=>({
     Button:{
         marginTop:'10px',
         backgroundColor:'rgb(37,71,170)',
         color:'white',
+        border:'none',
+        width:'65px',
+        height:'35px',
+        borderRadius:'3px 3px 3px',
+        cursor:'pointer',
+        outline:'none',
         '&:hover':{
             backgroundColor:'rgb(37,71,170)',
             transform:'scale(0.99)'
+        }
+    },
+    grid1:{
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'space-between',
+        '& .MuiFormControl-root':{
+            width:'90%'
+        }
+    },
+    grid:{
+        margin:theme.spacing(1),
+        '& .MuiFormControl-root':{
+            width:'100%'
         }
     }
 }))
@@ -23,6 +43,7 @@ const Form = (props)=>{
     const {register,handleSubmit,errors,control} = useForm();
     const params = useParams();
     const classes = useStyle();
+    const history = useHistory();
 
     const handlerForm = (data)=>{
         if (checkUser()) {
@@ -30,6 +51,7 @@ const Form = (props)=>{
         }else{
             dispatch(createContact(data))
         }
+        history.push('/contacts')
     }
     const checkUser = ()=>{
         if (props.hasOwnProperty('contact')) {
@@ -42,32 +64,32 @@ const Form = (props)=>{
     return (
             <form onSubmit={handleSubmit(handlerForm)}>
                 <Grid container>
-                    <Grid item xs="12" lg="5" sm="6" style={{marginRight:'62px'}}>
-                        <ControllerInput placeholder={user?user.nom:'nom'} name="nom" control={control}/>
+                    <Grid item xs={12} lg={12} className={classes.grid}>
+                        <ControllerInput defValue={user?user.nom:''} name="nom" control={control}/>
                     </Grid>
-                    <Grid item xs="12" lg="6" sm="6">
-                        <ControllerInput placeholder={user?user.pnom:'prenom'} name="pnom" control={control}/>
+                    <Grid item xs={12} lg={12} className={classes.grid}>
+                        <ControllerInput defValue={user?user.pnom:''} name="pnom" control={control}/>
                     </Grid>
-                    <Grid item xs="12" lg="12" md={12}>
-                        <ControllerInput placeholder={user?user.pstnom:'postnom'} name="pstnom" control={control}/>
+                    <Grid item xs={12} lg={12} className={classes.grid}>
+                        <ControllerInput defValue={user?user.pstnom:''} name="pstnom" control={control}/>
                     </Grid>
-                    <Grid item xs="12" lg="12">
-                        <ControllerInput placeholder={user?user.mail:'mail'} name="mail" 
+                    <Grid item xs={12} lg={12} className={classes.grid}>
+                        <ControllerInput defValue={user?user.mail:''} name="mail" 
                         pattern={/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/} control={control} />
                     </Grid>
                     {errors.mail && <p>veillez entrer une adresse mail valide</p>}
-                    <Grid item xs="12" lg="12">
-                        <ControllerInput placeholder={user?user.tel:'Téléphone'} name="tel" 
+                    <Grid item xs={12} lg={12} className={classes.grid}>
+                        <ControllerInput defValue={user?user.tel:''} name="tel" 
                         pattern={/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/}  control={control}/>
                     </Grid>
-                    <Grid item xs="12" lg="12">
-                        <ControllerInput placeholder={user?user.soc:'société'} name="soc" control={control}/>
+                    <Grid item xs={12} lg={12} className={classes.grid}>
+                        <ControllerInput defValue={user?user.soc:''} name="soc" control={control}/>
                     </Grid>
-                    <Grid item xs="12" lg="12">
-                        <ControllerInput placeholder={user?user.birth:'date de naissance'} name="birth" control={control}/>
+                    <Grid item xs={12} lg={12} className={classes.grid}>
+                        <ControllerInput defValue={user?user.birth:''} name="birth" control={control}/>
                     </Grid>
-                    <Grid item xs="12" lg="12">
-                        <Button className={classes.Button}>{props.btnText}</Button>
+                    <Grid item xs={12} lg={12} className={classes.grid}>
+                        <button className={classes.Button}>{props.btnText}</button>
                     </Grid>
                 </Grid>
             </form>

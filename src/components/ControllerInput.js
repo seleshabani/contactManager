@@ -1,25 +1,32 @@
 import React from "react";
 import {Controller} from 'react-hook-form';
-import { Input } from "@material-ui/core";
+import { FormControl, TextField } from "@material-ui/core";
 
 
 
-const ControllerInput = ({name,placeholder,control,pattern=null})=>{
+const ControllerInput = ({name,defValue,control,pattern=null})=>{
     return(
+        <FormControl>
         <Controller
             control={control}
             name={name}
+            defaultValue={defValue}
             render={(
-                {ref },
+                {ref,value,onChange},
             ) => (
-                <Input
+                <TextField
                 inputRef={ref}
-                placeholder={placeholder}
                 fullWidth
+                size='small'
+                variant="outlined"
+                label={name}
+                value={value}
+                onChange={e => onChange(e.target.value)}
                 />
             )}
-            
+            rules={{required:true}}
             />
+        </FormControl>
     )
 }
 export default ControllerInput;

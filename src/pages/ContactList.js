@@ -5,6 +5,7 @@ import _ from "lodash";
 import {Link} from "react-router-dom";
 import { Button, Card, CardContent, Container, Grid, makeStyles } from "@material-ui/core";
 import { GridRow } from "semantic-ui-react";
+import Loader from "../components/Loader";
 
 const useStyle = makeStyles((theme)=>({
     grid:{
@@ -73,7 +74,7 @@ const ContactsList = (props)=>{
             })
         }
         if (ContactsList.loading) {
-            return <p>chargement...</p>
+            return <Loader/>
         }
 
         if (ContactsList.errorMessage !== "") {

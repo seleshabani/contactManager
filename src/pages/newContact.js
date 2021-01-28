@@ -1,4 +1,4 @@
-import { Card, Container, makeStyles, Typography} from '@material-ui/core';
+import {Container, makeStyles, Paper, Typography} from '@material-ui/core';
 import React from 'react';
 import Form from '../components/form';
 
@@ -14,12 +14,12 @@ const NewContact = ()=>{
     const classes = useStyle();
 
     return <Container>
-            <Card className={classes.card}>
+            <Paper className={classes.card}>
               <Typography variant="h2" gutterBottom>
                 Nouveau Contact
               </Typography>
              <Form btnText="Créer"/>
-            </Card>
+            </Paper>
             </Container>
 }
 export default  NewContact;

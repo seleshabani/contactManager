@@ -1,6 +1,7 @@
 const initialState = {
     drawerOpen:false,
-    drawerSize:'0'
+    drawerSize:'0',
+    FlashMessage:''
 }
 
 const themeReducer = (state = initialState,action)=>{
@@ -11,6 +12,11 @@ const themeReducer = (state = initialState,action)=>{
                 ...state,
                 drawerOpen:!state.drawerOpen,
                 drawerSize:state.drawerSize === '240'? '0':'240'
+            }
+        case 'TOGGLE_FLASH':
+            return {
+                ...state,
+                FlashMessage:action.payload
             }
         default:
             return state;

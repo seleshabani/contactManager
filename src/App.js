@@ -28,6 +28,7 @@ function App() {
      <MenuBar/>
      <main className={classes.content}>
       <Switch>
+        <Route path={"/"} exact component={ContactList}/>
         <Route path={"/contacts"} exact component={ContactList}/>
         <Route path={"/contacts/:id"} exact component={Contact}/>
         <Route path={"/contacts-update/:id"} exact component={UpdateContact}/>

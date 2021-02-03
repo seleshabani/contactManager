@@ -21,3 +21,7 @@ les technologies utilisés sont repris sur la liste ci-dessous:
 * ensuite à partir du terminal faire : git clone https://github.com/seleshabani/test_kda_frotend.git
 * se placer dans le dossier créer puis faire toujours dans le terminal : npm install
 * une fois l'installation terminé faire : npm start
+
+## View
+
+<img src="contactManager.PNG" width="400" height="200">

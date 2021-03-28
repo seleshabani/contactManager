@@ -1,1 +1,1 @@
-export const API_URL  = "http://test_kda_backend.test/api";
+export const API_URL  = "https://jsonplaceholder.typicode.com";

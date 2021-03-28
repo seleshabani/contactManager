@@ -14,7 +14,7 @@ export const GetContactsList = (page) => async dispatch => {
         
         dispatch({
             type:"CONTACT_LIST_SUCCESS",
-            payload:res.data['hydra:member']
+            payload:res.data
         });
 
     }catch(e){

@@ -25,7 +25,7 @@ const UpdateContact = (props)=>{
             return (
                 <Container>
                         <Typography variant="h4" gutterBottom>
-                            {contact.data.contactProfil.nom}
+                            {contact.data.contactProfil.name}
                         </Typography>
                         <Form contact={contact.data.contactProfil} btnText='modifier'/>
                 </Container>

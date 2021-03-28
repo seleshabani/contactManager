@@ -45,7 +45,7 @@ const Contact = (props)=>{
                             </CardHeader> */}
                             <CardContent>
                                 <h1>
-                                    {ContactState.data.contactProfil.nom}
+                                    {ContactState.data.contactProfil.name}
                                 </h1>
                             </CardContent>
                             <CardActions>

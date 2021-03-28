@@ -61,7 +61,7 @@ const Recherche = (props)=>{
                     <Card>
                         <CardContent>
                             <p className={classes.p}> 
-                                <span>{el.nom}</span>
+                                <span>{el.name}</span>
                                 <Link className={classes.link} to={`/contacts/${el.id}`}>
                                 <Button className={classes.Button}>
                                     voir

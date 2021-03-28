@@ -2,7 +2,7 @@ import { makeStyles, Grid } from "@material-ui/core";
 import React from "react";
 import {useForm} from 'react-hook-form';
 import { useDispatch } from "react-redux";
-import {useHistory, useLocation, useParams } from "react-router-dom";
+import {useHistory, useParams } from "react-router-dom";
 import {updateContact,createContact} from "../actions/contactActions";
 import ControllerInput from "./ControllerInput";
 
@@ -65,28 +65,22 @@ const Form = (props)=>{
             <form onSubmit={handleSubmit(handlerForm)}>
                 <Grid container>
                     <Grid item xs={12} lg={12} className={classes.grid}>
-                        <ControllerInput defValue={user?user.nom:''} name="nom" control={control}/>
+                        <ControllerInput defValue={user?user.name:''} name="name" control={control}/>
                     </Grid>
                     <Grid item xs={12} lg={12} className={classes.grid}>
-                        <ControllerInput defValue={user?user.pnom:''} name="pnom" control={control}/>
+                        <ControllerInput defValue={user?user.username:''} name="username" control={control}/>
                     </Grid>
                     <Grid item xs={12} lg={12} className={classes.grid}>
-                        <ControllerInput defValue={user?user.pstnom:''} name="pstnom" control={control}/>
-                    </Grid>
-                    <Grid item xs={12} lg={12} className={classes.grid}>
-                        <ControllerInput defValue={user?user.mail:''} name="mail" 
+                        <ControllerInput defValue={user?user.email:''} name="email" 
                         pattern={/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/} control={control} />
                     </Grid>
                     {errors.mail && <p>veillez entrer une adresse mail valide</p>}
                     <Grid item xs={12} lg={12} className={classes.grid}>
-                        <ControllerInput defValue={user?user.tel:''} name="tel" 
+                        <ControllerInput defValue={user?user.tel:''} name="phone" 
                         pattern={/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/}  control={control}/>
                     </Grid>
                     <Grid item xs={12} lg={12} className={classes.grid}>
-                        <ControllerInput defValue={user?user.soc:''} name="soc" control={control}/>
-                    </Grid>
-                    <Grid item xs={12} lg={12} className={classes.grid}>
-                        <ControllerInput defValue={user?user.birth:''} name="birth" control={control}/>
+                        <ControllerInput defValue={user?user.soc:''} name="company" control={control}/>
                     </Grid>
                     <Grid item xs={12} lg={12} className={classes.grid}>
                         <button className={classes.Button}>{props.btnText}</button>

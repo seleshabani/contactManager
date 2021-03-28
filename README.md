@@ -15,12 +15,9 @@ les technologies utilisés sont repris sur la liste ci-dessous:
 * [react-router]
 * [users-api] (http://seleshabani.mpwasa-magazine.com) (https://github.com/seleshabani/test_kda_backend) l'api fournissant la liste des contacts
 
-## Installation
+## Live preview
 ***
-* se placer dans un répertoire de son pc en local
-* ensuite à partir du terminal faire : git clone https://github.com/seleshabani/test_kda_frotend.git
-* se placer dans le dossier créer puis faire toujours dans le terminal : npm install
-* une fois l'installation terminé faire : npm start
+https://seleshabani.github.io/contactManager
 
 ## View
 

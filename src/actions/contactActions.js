@@ -131,7 +131,7 @@ export const searchContact = (item)=>async dispatch=>{
         //const result = await axios.delete(API_URL+`/users?soc=${item}`);
         dispatch({
             type:"CONTACT_SEARCH_SUCCESS",
-            payload:result.data['hydra:member']
+            payload:result.data
         })
 
     } catch (error) {
